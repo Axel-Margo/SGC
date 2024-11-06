@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+
+@layer utilities {
+    .active {
+      @apply relative inline-block;
+    }
+    
+    .active::after {
+      content: '';
+      @apply absolute bg-current;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 35%; 
+      height: 1px; 
+    }
+  }
+
+body {
+    @apply font-sans; 
+  }
