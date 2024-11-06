@@ -12,13 +12,13 @@ export default function NavElements({ fullItems }: NavbarProps){
         'Enfant'
     ]
 
-    const wholeNavItems: JSX.Element[] = navItems.map(e => <li key={e} className="text-white">{e}</li>)
+    const wholeNavItems: JSX.Element[] = navItems.map(e => <li key={e} className="text-neutral-500 text-xl font-thin">{e}</li>)
 
     const slicedItems: string[] = [] = navItems.slice(0, 2)
-    const slicedNavItems: JSX.Element[] = slicedItems.map(e => <li key={e} className="mx-4 text-white">{e}</li>)
+    const slicedNavItems: JSX.Element[] = slicedItems.map(e => <li key={e} className="mx-4 text-neutral-500 text-xl font-thin">{e}</li>)
     
     
-    return ( <ul className="flex flex-row mt-2 relative">
+    return ( <ul className="flex flex-row relative">
         {fullItems ? wholeNavItems  : slicedNavItems}
      </ul> )
 }

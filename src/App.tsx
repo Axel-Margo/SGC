@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import BackgroundImage from './ui/BackgroundImage'
+import HeroText from './components/HeroText';
 
 const router = createBrowserRouter( 
     [
@@ -10,6 +11,7 @@ const router = createBrowserRouter(
           <>
             <BackgroundImage />
             <Navbar  />
+            <HeroText/>
           </>
 }])
 
