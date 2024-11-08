@@ -9,7 +9,7 @@ export default function HeroText() {
                     <p className="text-2xl text-white font-normal"> Sgs fait toutes ses créations à la main et uniquement à la main !</p>
                 </div>
                     <div className="mt-10">
-                    <a href="#" className="flex flex-row justify-between bg-neutral-500/80 p-4"> <p className="text-white font-semibold">Découvrir l'histoire de SGC </p>
+                    <a href="/shop" className="flex flex-row justify-between bg-neutral-500/80 p-4"> <p className="text-white font-semibold">Découvrir l'histoire de SGC </p>
                     <FaArrowRight className="text-white mt-1" /></a>
                     </div>
                 </div> 

@@ -1,19 +1,40 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import HomeNavbar from './components/HomeNavbar';
 import BackgroundImage from './ui/BackgroundImage'
 import HeroText from './components/HeroText';
+import Navbar from './components/Navbar';
+import ArticleDescription from './components/ArticleDescription';
+
+import Articles from './ui/Articles';
 
 const router = createBrowserRouter( 
     [
         {
-            path: '/',
+          path: '/',
           element:
           <>
             <BackgroundImage />
-            <Navbar  />
+            <HomeNavbar  />
             <HeroText/>
           </>
-}])
+},
+
+  {
+    path: '/shop',
+    element:
+    <>
+      <Navbar  />
+      <Articles />
+    </>
+},
+{
+  path: '/product',
+  element:
+  <>
+    <Navbar  />
+    <ArticleDescription />
+  </>
+},])
 
 export default function App() {
  
