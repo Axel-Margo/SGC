@@ -1,4 +1,4 @@
-interface ButtonProps {
+type ButtonProps = {
     primary: boolean
     buttonText: string
     link: string

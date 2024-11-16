@@ -38,7 +38,15 @@ const router = createBrowserRouter(
     <Navbar  />
     <ArticleDescription />
   </>
-},])
+},
+{
+  path: '/product/personal-infos',
+  element:
+  <>
+    <Navbar  />
+    <ArticleDescription />
+  </>
+}])
 
 export default function App() {
  
