@@ -1,4 +1,4 @@
-import Article from "../components/Article"
+import Article from "../components/ArticleShowcase"
 import Label from "../ui/Label"
 export default function Articles(){
     return (

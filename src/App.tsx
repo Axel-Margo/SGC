@@ -1,11 +1,12 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomeNavbar from './components/HomeNavbar';
 import BackgroundImage from './ui/BackgroundImage'
-import HeroText from './components/HeroText';
+import HeroText from './ui/HeroText';
 import Navbar from './components/Navbar';
 import ArticleDescription from './components/ArticleDescription';
 
 import Articles from './ui/Articles';
+
 
 const router = createBrowserRouter( 
     [
@@ -13,9 +14,12 @@ const router = createBrowserRouter(
           path: '/',
           element:
           <>
-            <BackgroundImage />
+          <BackgroundImage />
+          <div className='lg:mx-16 xl:mx-28'>
+            
             <HomeNavbar  />
             <HeroText/>
+          </div>
           </>
 },
 

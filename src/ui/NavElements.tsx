@@ -2,20 +2,42 @@ interface NavbarProps {
     fullItems: boolean
 }
 
+interface NavLinks {
+    name: string,
+    link: string,
+   
+}
+
 export default function NavElements({ fullItems }: NavbarProps){
-    const navItems: string[] = [
-         
-        'Shop', 
-        'Forum', 
-        'Homme', 
-        'Femme', 
-        'Enfant'
+   
+    const navItems: NavLinks[] = [
+        {
+            name: 'Shop',
+            link: '/shop',
+        } ,
+        {
+            name: 'Forum',
+            link: '/',
+        } ,
+        {
+            name: 'Homme',
+            link: '/',
+        } ,
+        {
+            name: 'Femme',
+            link: '/',
+        } ,
+        {
+            name: 'Enfant',
+            link: '/'
+        } 
+        
     ]
 
-    const wholeNavItems: JSX.Element[] = navItems.map(e => <li key={e} className="text-neutral-500 text-xl font-thin">{e}</li>)
+    const wholeNavItems: JSX.Element[] = navItems.map(e =><a href={e.link}> <li key={e.name} className="text-neutral-500 text-xl font-thin">{e.name}</li></a>)
 
-    const slicedItems: string[] = [] = navItems.slice(0, 2)
-    const slicedNavItems: JSX.Element[] = slicedItems.map(e => <li key={e} className="mx-4 text-neutral-500 text-xl font-thin">{e}</li>)
+    const sliceItems = navItems.slice(0, 2)
+    const slicedNavItems: JSX.Element[] = sliceItems.map(e =><a href={e.link}> <li key={e.name} className="mx-4 text-neutral-500 text-xl font-thin">{e.name}</li></a>)
     
     
     return ( <ul className="flex flex-row relative">
