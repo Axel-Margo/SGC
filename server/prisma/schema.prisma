@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id            Int             @id @default(autoincrement())
+  name          String          @unique
+  email         String          @unique 
+  password      String  
+  created_At    DateTime        @default(now())
+  Cart          Cart?    
+  order         Orders[]
+}
+
+model Orders {
+  id            Int             @id @default(autoincrement())
+  User          Users           @relation(fields: [user_id], references: [id])     
+  user_id       Int             
+}
+
+model Cart {
+  id            Int             @id @default(autoincrement())
+  user_id       Int             @unique
+  user          Users           @relation(fields: [user_id], references: [id])
+  Items         Cart_Items[]
+  price         Decimal?
+}
+
+model Cart_Items {
+  cart_id         Int       
+  cart            Cart          @relation(fields: [cart_id], references: [id])
+  products_id     Int
+  products        Products      @relation(fields: [products_id], references: [id])
+  @@id([cart_id, products_id])
+}
+
+model Products {
+  id              Int           @id @default(autoincrement())
+  name            String    
+  description     String?
+  price           Decimal
+  stock           Boolean       
+  category_id     Categories[] 
+  filter_id       Filters[]
+  picture         Pictures[]
+  gender_id       Int
+  gender          Genders       @relation(fields: [gender_id], references: [id])
+  created_At      DateTime      @default(now())
+  cart_items      Cart_Items[]
+}
+
+model Pictures {
+  id              Int           @id @default(autoincrement())
+  link            String        @unique
+  product_id      Int
+  product         Products      @relation(fields: [product_id], references: [id])
+}
+
+model Categories {
+  id              Int           @id @default(autoincrement())
+  name            String
+  product         Products[]
+}
+
+model Filters {
+  id              Int           @id @default(autoincrement())
+  name            String
+  product         Products[]
+}
+
+model Genders {
+  id              Int           @id @default(autoincrement())
+  name            String
+  product         Products[]
+} 
