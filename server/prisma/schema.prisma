@@ -33,17 +33,11 @@ model Cart {
   id            Int             @id @default(autoincrement())
   user_id       Int             @unique
   user          Users           @relation(fields: [user_id], references: [id])
-  Items         Cart_Items[]
   price         Decimal?
+  products      Products[]
 }
 
-model Cart_Items {
-  cart_id         Int       
-  cart            Cart          @relation(fields: [cart_id], references: [id])
-  products_id     Int
-  products        Products      @relation(fields: [products_id], references: [id])
-  @@id([cart_id, products_id])
-}
+
 
 model Products {
   id              Int           @id @default(autoincrement())
@@ -57,7 +51,7 @@ model Products {
   gender_id       Int
   gender          Genders       @relation(fields: [gender_id], references: [id])
   created_At      DateTime      @default(now())
-  cart_items      Cart_Items[]
+  cart            Cart[]
 }
 
 model Pictures {
