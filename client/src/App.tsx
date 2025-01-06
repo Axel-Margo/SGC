@@ -4,8 +4,9 @@ import BackgroundImage from './ui/BackgroundImage'
 import HeroText from './ui/HeroText';
 import Navbar from './components/Navbar';
 import ArticleDescription from './components/ArticleDescription';
-
 import Articles from './ui/Articles';
+import ProductImage from './ui/ProductImage';
+import PersonalInfos from './ui/PersonalInfos';
 
 
 const router = createBrowserRouter( 
@@ -44,7 +45,9 @@ const router = createBrowserRouter(
   element:
   <>
     <Navbar  />
-    <ArticleDescription />
+    <ProductImage />
+    <PersonalInfos />
+    
   </>
 }])
 
