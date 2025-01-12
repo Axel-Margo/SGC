@@ -19,6 +19,14 @@
       width: 35%; 
       height: 1px; 
     }
+
+    .mobile-only {
+      @apply  lg:hidden;
+    }
+    
+    .desktop-only {
+      @apply hidden md:flex;
+    }
   }
 
 body {

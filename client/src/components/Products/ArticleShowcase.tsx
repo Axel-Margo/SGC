@@ -1,6 +1,6 @@
 import { IoBag } from "react-icons/io5";
 
-import ArticleImg from "../ui/ArticlesImg";
+import ArticleImg from "../../ui/Products/ArticlesImg";
 
 export default function Article(){
 

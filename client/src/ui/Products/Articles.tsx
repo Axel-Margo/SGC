@@ -1,5 +1,5 @@
-import Article from "../components/ArticleShowcase"
-import Label from "../ui/Label"
+import Article from "../../components/Products/ArticleShowcase"
+import Label from "./Label"
 export default function Articles(){
     return (
         <div className="mx-6">

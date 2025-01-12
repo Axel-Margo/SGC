@@ -1,3 +1,4 @@
+
 type ButtonProps = {
     primary: boolean
     buttonText: string
@@ -13,12 +14,12 @@ const buttonStyles = {
 
  
 
-export default function Button({primary, buttonText, link}: ButtonProps ){ return (
+export default function Button({primary, buttonText, link }: ButtonProps ){ return (
         <>  
       
         
            {primary ? 
-                <button className={buttonStyles.primary}> 
+                <button  className={buttonStyles.primary}> 
                     <a href={link}>
                         {buttonText}
                     </a>
