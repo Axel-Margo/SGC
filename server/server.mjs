@@ -1,8 +1,21 @@
+import bodyParser from 'body-parser'
 import express from 'express'
+import cors from 'cors'
+import userRoutes  from './routes/userRoutes.mjs'
+import dotenv from 'dotenv'
+
+
+dotenv.config()
+
 const app = express()
+const PORT = process.env.PORT
 
-const PORT = 5000
 
+app.use(cors())
+app.use(bodyParser.json())
+
+// Routes
+app.use('/users', userRoutes)
 
 
 
