@@ -7,7 +7,7 @@ import Form from './Form'
 
 
 
-export default function RegisterForm(){
+export default function LoginForm(){
 const { register } = useForm<UserFormData>({
   resolver: zodResolver(userSchema)
 })
@@ -16,12 +16,14 @@ const { register } = useForm<UserFormData>({
 
 const onSubmit = async (data: UserFormData) => {
 
-try { const response = await fetch('http://localhost:4200/users/register', {
+try { const response = await fetch('http://localhost:4200/users/login', {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
   },
   body: JSON.stringify(data)
+  
+
 })
 
 console.log(response.status);
@@ -36,31 +38,21 @@ catch (e) {
 }
 }
 const fields = [
-  {
-type: "text",
-placeholder: "Utilisateur",
-name: "name",
-register: register,
 
-  }, 
   {
 type: "text",
 placeholder: "Email",
 name: "email",
 register: register,
-},
+
+  },
 {
 type: "password",
 placeholder: "Mot de passe",
 name: "password",
 register  : register,
-  },
-{
-type: "password",
-placeholder: "Confirmez votre mot de passe",
-name: "confirmPassword",
-register  : register,
-  },
+  }
+
 ]
 return (
 
@@ -68,7 +60,7 @@ return (
     <div className="m-auto bg-neutral-600 p-60 ">
     <h1 className="justify-center mb-8 text-3xl"> <a href="/"> S'enregistrer </a></h1>
     
-    <Form fields={fields} linkHref='/login' buttonText="S'enregistrer" linkText="J'ai déjà un compte" onSubmit={onSubmit} schema={userSchema} />
+    <Form fields={fields} linkHref='/register' buttonText="Se connecter" linkText="Créer un compte" onSubmit={onSubmit} schema={userSchema} />
     </div>
   </div>
 );

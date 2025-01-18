@@ -1,6 +1,6 @@
 import { z, ZodType } from 'zod'
-import { patterns } from '../lib/constants'
-import { UserFormData } from '../lib/types/Form'
+import { UserFormData } from '../../../client/src/types/Form'
+import { patterns } from '../constants'
 
 export const userSchema: ZodType<UserFormData> = z.object({
     name: z.string().min(4, "Minimum 4 caractères."),

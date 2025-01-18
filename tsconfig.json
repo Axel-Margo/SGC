@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                  // Génère du code compatible avec ES6+
+    "module": "ESNext",               // Utilise les modules ES (import/export)
+    "rootDir": "./",                  // Racine des fichiers source
+    "outDir": "./dist",               // Répertoire pour les fichiers générés
+    "strict": true,                   // Active les vérifications strictes de TypeScript
+    "esModuleInterop": true,          // Améliore la compatibilité avec les modules CommonJS
+    "forceConsistentCasingInFileNames": true, // Sensible à la casse dans les chemins de fichiers
+    "moduleResolution": "node",       // Résolution des modules comme Node.js
+    "skipLibCheck": true,             // Ignore la vérification des types dans les fichiers .d.ts
+    "allowJs": true,                  // Permet de gérer les fichiers JavaScript
+    "resolveJsonModule": true         // Permet d'importer des fichiers JSON
+  },
+  "include": [
+    "shared/**/*",                    // Inclure les fichiers dans le dossier partagé
+    "server/**/*"                     // Inclure les fichiers dans le dossier serveur
+  ],
+  "exclude": [
+    "node_modules",                   // Exclure les dépendances
+    "dist"                            // Exclure les fichiers générés
+  ]
+}

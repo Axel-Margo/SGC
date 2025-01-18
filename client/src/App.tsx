@@ -9,6 +9,7 @@ import ProductImage from './ui/ProductImage';
 import PersonalInfos from './ui/PersonalInfos';
 import LoginBackgroundImage from './ui/Login/LoginBackgroundImage';
 import RegisterForm from './ui/Login/RegisterForm';
+import LoginForm from './ui/Login/LoginForm';
 
 
 const router = createBrowserRouter( 
@@ -35,6 +36,16 @@ const router = createBrowserRouter(
     </>
 },{
   path: '/login',
+  element:
+  <div className='m-0 p-0 h-screen flex flex-col'>
+    <LoginBackgroundImage />
+    <Navbar  />
+    <LoginForm />
+
+  </div >
+},
+{
+  path: '/register',
   element:
   <div className='m-0 p-0 h-screen flex flex-col'>
     <LoginBackgroundImage />
