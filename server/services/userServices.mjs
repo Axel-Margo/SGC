@@ -27,34 +27,25 @@ catch (e) {
 } }    
 
 export const findUser = async (email, password) => {
-    try {
-        const user = await prisma.users.findUnique({
+    const user = await prisma.users.findUnique({
             where: {
                  email
             }
         })
-
-        if (!user) {
-            console.log("L'utilisateur n'a pas été trouvé.") 
-            return {succes: false, message: "Utilisateur non trouvé"}
-        }
-    }
-    catch(e) {console.log(e)
-        return res.status(500).json({error: "Erreur lors de la requête utilisateur"})
-    }
-    try {
-        const isPassword = await bcrypt.compare(password, user.password, (err, res) =>{
-            if (err) console.log(err)
-            
-            if (!res) console.log('Le mot de passe est incorrecte.')
-                console.log('Connexion réussie.') 
-            })
-    }
-    catch (e){
+            if (user == null) return {success: false, message: "Cet utilisateur n'existe pas."}
         
+    
+    try {
+        const isPassword = await bcrypt.compare(password, user.password)
+            if (!isPassword) return {success: false, message: "Mot de passe érroné."}
+                return {success: true, message: "Connexion réussie !"}
+        }
+    
+    catch (e){
         console.log(e)
-        return res.status(500).json({error: "Erreur lors de la comparaison des mots de passes."})
+        return res.status(500).json({error: e})
     }
 
     
 }
+

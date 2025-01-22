@@ -1,4 +1,4 @@
-import { createUser } from "../services/userServices.mjs";
+import { createUser, findUser } from "../services/userServices.mjs";
 import { userSchema } from '../../dist/shared/lib/schemas/userSchema.js';
 
 
@@ -33,19 +33,19 @@ export const userControllers = {
     }
     },
 
-    findUser: async (req, res) => {
+    connectUser: async (req, res) => {
         const { email, password } = req.body
 
         try {
-            const userAccount = await findUser(email, password)
-
-            res.status(200).json({
-                message: "Connexion réussie",
-            })
+            const result = await findUser(email, password)
+            if(!result.success) return res.status(400).json({message: result.message})
+                
+            res.status(200).json({message: result.message})
         }
-    catch(e){
+        catch(e){
         console.log(e)
-        res.status(500).json({error: "Erreur lors de la connexion"})
-    }
+        
+        res.status(500).json({error: "Erreur lors de la connexion."})
+        }
     }
 }

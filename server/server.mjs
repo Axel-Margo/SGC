@@ -2,6 +2,8 @@ import bodyParser from 'body-parser'
 import express from 'express'
 import cors from 'cors'
 import userRoutes  from './routes/userRoutes.mjs'
+import productsRoutes  from './routes/productsRoutes.mjs'
+
 import dotenv from 'dotenv'
 
 
@@ -16,7 +18,7 @@ app.use(bodyParser.json())
 
 // Routes
 app.use('/users', userRoutes)
-
+app.use('/products', productsRoutes )
 
  
 

@@ -1,5 +1,5 @@
 import { z, ZodType } from 'zod'
-import { UserFormData } from '../../../client/src/types/Form'
+import { UserFormData, UserConnectData } from '../../../client/src/types/Form'
 import { patterns } from '../constants'
 
 export const userSchema: ZodType<UserFormData> = z.object({
@@ -16,3 +16,11 @@ export const userSchema: ZodType<UserFormData> = z.object({
     path: ["confirmPassword"], 
     message: "Les mots de passe ne correspondent pas.",
   })
+
+  export const connectSchema: ZodType<UserConnectData> = z.object({
+    email: z.string().email("L'email est requis."),
+
+    password: z.string().min(6, "Le mot de passe doit faire minimum 6 caractères et contenir un signe spécial")
+  })
+
+ 

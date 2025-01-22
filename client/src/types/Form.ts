@@ -1,5 +1,6 @@
 import { FieldError, UseFormRegister } from "react-hook-form"
 import { z } from "zod";
+import { connectSchema } from "../../../shared/lib/schemas/userSchema";
 
 export type UserFormData = {
     name: string;
@@ -8,6 +9,11 @@ export type UserFormData = {
     confirmPassword: string;
     
 }
+export type UserConnectData = {
+    email: string;
+    password: string
+}
+export type UserConnexionData = z.infer<typeof connectSchema>
 
 export type FormFieldProps = {
     type: string;
@@ -28,3 +34,4 @@ export interface FormProps<T extends z.ZodType<any>> {
     linkText?: string;
     linkHref?: string;
   }
+

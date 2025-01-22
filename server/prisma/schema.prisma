@@ -20,6 +20,7 @@ model Users {
   password      String  
   created_At    DateTime        @default(now())
   Cart          Cart?    
+  Session       Sessions?
   order         Orders[]
 }
 
@@ -78,3 +79,15 @@ model Genders {
   name            String
   product         Products[]
 } 
+
+
+// WEB
+
+model Sessions {
+  id              Int           @id @default(autoincrement())
+  user_id         Int           @unique
+  User            Users         @relation(fields: [user_id], references: [id])
+  token           String        @unique 
+  created_At      DateTime      @default(now())
+  expires_At      DateTime  
+}
