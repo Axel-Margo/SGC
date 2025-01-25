@@ -10,9 +10,7 @@ export default function ArticleDescription(){
     return(<>
     <div className='mx-6 mt-6'>
     <div className='md:flex gap-2' >    
-        <div className='md:w-1/2 md:max-w-[300px] md:min-w-[300px]'>
-        <ProductImage />
-        </div>
+        
     <div className=' '>
     <ProductDescription />
         <div>

@@ -10,7 +10,7 @@ export default function Navbar(){
     return (
         <>
                 <div className="w-full bg-neutral-200 top-0">
-                    <ul className="p-4 flex flex-row justify-between   ">
+                    <ul className="py-4 flex flex-row justify-between mx-40  ">
                         <li>    
                             <a href='/'>
                                 <h1 className="text-2xl  text-purple-500 ">SGC</h1>

@@ -32,7 +32,9 @@ const router = createBrowserRouter(
     element:
     <>
       <Navbar  />
+      <div className='mx-40'>
       <Articles />
+      </div>
     </>
 },{
   path: '/login',
@@ -54,7 +56,7 @@ const router = createBrowserRouter(
   </div >
 },
 {
-  path: '/product',
+  path: '/products/:id',
   element:
   <>
     <Navbar  />

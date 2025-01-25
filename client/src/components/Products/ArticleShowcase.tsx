@@ -1,4 +1,3 @@
-import { IoBag } from "react-icons/io5";
 
 import ArticleImg from "../../ui/Products/ArticlesImg";
 
@@ -18,7 +17,6 @@ export default function Article(){
                     <div className="">
                         <a href="#" className="flex flex-row mt-6">
                             <p>Ajouter au panier</p>
-                            <IoBag className="mt-1 ml-4" />
 
                         </a>
                     </div>
