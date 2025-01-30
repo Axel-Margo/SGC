@@ -44,6 +44,7 @@ model Products {
   id              Int           @id @default(autoincrement())
   name            String    
   description     String?
+  slug            String
   price           Decimal
   stock           Boolean       
   category_id     Categories[] 

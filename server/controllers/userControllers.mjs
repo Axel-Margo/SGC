@@ -1,5 +1,6 @@
 import { createUser, findUser } from "../services/userServices.mjs";
 import { userSchema } from '../../dist/shared/lib/schemas/userSchema.js';
+import { v4 as uuid4 } from 'uuid'
 
 
 export const userControllers = {
@@ -7,7 +8,6 @@ export const userControllers = {
     
     try {
         userSchema.parse(req.body)
-        console.log('VOICI LE USER:',req.body)
     }
 
     catch (e) {
@@ -15,13 +15,13 @@ export const userControllers = {
         res.status(400).send(e.errors)
     }
     
-    const { name, email, password } = req.body
+    const { body: {name, email, password }, session: {id} } = req
     try {
+        
         const user = await createUser(name, email, password)
 
         res.status(201).json({
-            message: "L'utilisateur a bien été créé.",
-            user: user
+            message: "L'utilisateur a bien été créé."
           })
     }
     
@@ -39,7 +39,13 @@ export const userControllers = {
         try {
             const result = await findUser(email, password)
             if(!result.success) return res.status(400).json({message: result.message})
-                
+            res.cookie('token', 'your-secure-token', {
+                    httpOnly: false,   
+                    secure: true,     
+                    sameSite: 'lax', 
+                    maxAge: 3600000 / 60 / 2
+                }) // VALEURS A CHANgER LORS DE LA MISE EN PROD
+            console.log()
             res.status(200).json({message: result.message})
         }
         catch(e){

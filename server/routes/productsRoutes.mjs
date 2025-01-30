@@ -3,6 +3,8 @@ import { productsControllers } from '../controllers/productsController.mjs'
 const router = express.Router()
 
 router.get('/', productsControllers.getProducts)
+router.get('/:id', productsControllers.getProductsById)
+
 
 
 
