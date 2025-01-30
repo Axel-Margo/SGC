@@ -22,6 +22,7 @@ try { const response = await fetch('http://localhost:4200/users/register', {
   headers: {
     "Content-Type": "application/json"
   },
+  credentials: 'include',
   body: JSON.stringify(data)
 })
 

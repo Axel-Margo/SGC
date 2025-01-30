@@ -38,23 +38,27 @@ export default function Articles() {
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
         {data.map((productData: ProductsData) => {
           return (
-          <div>
+          <div key={productData.name}>
             <a href={`/products/${productData.id}`}>
-              <div key={productData.name} className="mt-1 ">
+              <div  className="mt-1 ">
 
                 <img src={productData.picture[0].link} />
-                <div className="flex flex-col max-h-20 min-h-20">
+              <div  className="border border-black flex justify-between flex-col">
+                <div className="flex flex-col max-h-20 min-h-20 ">
                             <h3 id="description" className="w-60 font-medium">{productData.name}</h3>
                         <span className="text-xs text-purple-400/70">Catégorie {productData.category_id[0].name}</span>
                         </div>
                         <div className="">
                         <span id="prix" className="font-bold">{productData.price}€</span>
 
-                                <p className="flex flex-row ">
-                                    Ajouter au panier 
-                                    <IoBag className="mt-1 ml-4" />
+                                <p className="flex flex-row justify-between  ">
+                                    Accéder à la page produit
+                                    <button className="p-2 mb-2 rounded-md bg-slate-500 flex items-center justify-center">
+                                      <IoBag  /> 
+                                    </button>
                                 </p>
 
+                        </div>
                         </div>
               </div>
             </a>

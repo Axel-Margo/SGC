@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { connectSchema, userSchema } from '../../../../shared/lib/schemas/userSchema.ts'
 import { UserConnexionData } from '../../types/Form.ts'
 import Form from './Form'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -12,6 +13,7 @@ const { register } = useForm<UserConnexionData>({
   resolver: zodResolver(userSchema)
 })
 
+const navigate = useNavigate()
 
 
 const onSubmit = async (data: UserConnexionData) => {
@@ -21,11 +23,13 @@ try {
   headers: {
     "Content-Type": "application/json"
   },
+  credentials: 'include',
   body: JSON.stringify(data)
   
 
 })
 const res = await response.json()
+navigate('/shop');
 console.log(res.message)
 
 }
