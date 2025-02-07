@@ -1,15 +1,14 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomeNavbar from './components/HomeNavbar';
-import BackgroundImage from './ui/BackgroundImage'
+import BackgroundImage from './ui/Backgrounds/BackgroundImage'
 import HeroText from './ui/HeroText';
 import Navbar from './components/Navbar';
-import ArticleDescription from './components/Products/ArticleDescription';
 import Articles from './ui/Products/Articles';
-import ProductImage from './ui/ProductImage';
-import PersonalInfos from './ui/PersonalInfos';
+import PersonalInfos from './ui/Products/PersonalInfos';
 import LoginBackgroundImage from './ui/Login/LoginBackgroundImage';
 import RegisterForm from './ui/Login/RegisterForm';
 import LoginForm from './ui/Login/LoginForm';
+import ArticleDescription from './components/Products/ArticleDescription';
 
 
 const router = createBrowserRouter( 
@@ -68,7 +67,6 @@ const router = createBrowserRouter(
   element:
   <>
     <Navbar  />
-    <ProductImage />
     <PersonalInfos />
     
   </>

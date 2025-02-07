@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { ProductInfo } from "../types/Products"
+import { ProductInfo } from "../../types/Products"
 
 
 export default function ProductDescription(){

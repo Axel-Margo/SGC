@@ -2,11 +2,13 @@ import { useEffect, useState } from "react"
 import Label from "./Label"
 import { ProductsData } from "../../types/Products"
 import { IoBag } from "react-icons/io5";
+import { useCartActions } from "../../tools/hooks/userCartActions";
 
 
 
 export default function Articles() {
   const [data, setData] = useState<ProductsData[] | null>();
+  const { handleAddToCart } = useCartActions()
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -39,10 +41,12 @@ export default function Articles() {
         {data.map((productData: ProductsData) => {
           return (
           <div key={productData.name}>
-            <a href={`/products/${productData.id}`}>
               <div  className="mt-1 ">
-
+            <a href={`/products/${productData.id}`}>
+            
                 <img src={productData.picture[0].link} />
+            </a>
+              
               <div  className="border border-black flex justify-between flex-col">
                 <div className="flex flex-col max-h-20 min-h-20 ">
                             <h3 id="description" className="w-60 font-medium">{productData.name}</h3>
@@ -53,7 +57,7 @@ export default function Articles() {
 
                                 <p className="flex flex-row justify-between  ">
                                     Accéder à la page produit
-                                    <button className="p-2 mb-2 rounded-md bg-slate-500 flex items-center justify-center">
+                                    <button onClick={() => handleAddToCart(productData)} className="z-10 p-2 mb-2 rounded-md bg-slate-400 flex items-center justify-center hover:bg-slate-500">
                                       <IoBag  /> 
                                     </button>
                                 </p>
@@ -61,7 +65,6 @@ export default function Articles() {
                         </div>
                         </div>
               </div>
-            </a>
         </div>
           );
         })}

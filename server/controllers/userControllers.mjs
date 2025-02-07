@@ -1,6 +1,5 @@
 import { createUser, findUser } from "../services/userServices.mjs";
 import { userSchema } from '../../dist/shared/lib/schemas/userSchema.js';
-import { v4 as uuid4 } from 'uuid'
 
 
 export const userControllers = {

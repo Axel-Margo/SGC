@@ -1,9 +1,8 @@
 
 import Button from '../Button'
 import SecurityAndDeliveries from '../../ui/Products/SecurityAndDeliveries'
-import ProductDescription from '../../ui/ProductDescription'
 import { ButtonPurpose } from '../../tools/dictionnary'
-import ProductImage from '../../ui/ProductImage'
+import ProductDescription from '../../ui/Products/ProductDescription'
 
 
 export default function ArticleDescription(){

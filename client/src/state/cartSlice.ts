@@ -13,12 +13,13 @@ export const cartSlice = createSlice({
     reducers : { 
         addToCart: (state, action) => {
             state.items.push(action.payload)
-            state.totalAmount += action.payload.price
+            state.totalAmount += Number(action.payload.price)
             state.totalItems++
         },
         removeFromCart: (state, action) => {
-            state.items.filter((item) => item.id !== action.payload.id)
-            state.totalAmount -= action.payload.price
+            const itemToRemove = state.items.findIndex((item) => item.id == action.payload.id)
+            state.items.splice(itemToRemove, 1)
+            state.totalAmount -= Number(action.payload.price)
             state.totalItems--
                 }
     }

@@ -1,6 +1,7 @@
 import { IoMdMenu } from "react-icons/io";
 import { useState } from "react";
 import Sidebar from "../ui/Sidebar";
+import Cart from "../ui/Cart";
 
 
 export default function Navbar(){
@@ -20,7 +21,12 @@ export default function Navbar(){
                         <li>
                             <IoMdMenu className="text-2xl mt-2 mobile-only" onClick={() => setVisibility(!visibility)}/>
                         </li>
-                            {visibility ? <Sidebar /> : null}
+                        <li>
+                            <Cart />
+                        </li>
+                        <li>
+                        {visibility ? <Sidebar /> : null}
+                        </li>
                     </ul>
                     <div className="w-full h-1  z-20">
                     </div>

@@ -29,6 +29,8 @@ app.use(session({
     maxAge: 60000 * 10
 }))
 
+app.use(cookieParser())
+
 // Routes
 app.use('/users', userRoutes)
 app.use('/products', productsRoutes )
