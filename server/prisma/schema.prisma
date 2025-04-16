@@ -14,81 +14,105 @@ datasource db {
 }
 
 model Users {
-  id            Int             @id @default(autoincrement())
-  name          String          @unique
-  email         String          @unique 
-  password      String  
-  created_At    DateTime        @default(now())
-  Cart          Cart?    
-  Session       Sessions?
-  order         Orders[]
+  id         Int         @id @default(autoincrement())
+  name       String      @unique
+  email      String      @unique
+  password   String
+  created_At DateTime    @default(now())
+  Cart       Cart?
+  Session    Sessions?
+  order      Orders[]
+  adresses   Addresses[]
+}
+
+model Addresses {
+  id          Int         @id @default(autoincrement())
+  user_id     Int
+  User        Users       @relation(fields: [user_id], references: [id])
+  street      String
+  city        String
+  postal_code String
+  country     String
+  type        AddressType
+
+  BillingOrders  Orders[] @relation("Billing")
+  ShippingOrders Orders[] @relation("Shipping")
+}
+
+enum AddressType {
+  BILLING
+  SHIPPING
 }
 
 model Orders {
-  id            Int             @id @default(autoincrement())
-  User          Users           @relation(fields: [user_id], references: [id])     
-  user_id       Int             
+  id                  Int   @id @default(autoincrement())
+  user_id             Int
+  User                Users @relation(fields: [user_id], references: [id])
+  billing_address_id  Int   @unique
+  shipping_address_id Int? 
+
+  BillingAddress  Addresses  @relation("Billing", fields: [billing_address_id], references: [id])
+  ShippingAddress Addresses? @relation("Shipping", fields: [shipping_address_id], references: [id])
+
+  created_At DateTime @default(now())
 }
 
 model Cart {
-  id            Int             @id @default(autoincrement())
-  user_id       Int             @unique
-  user          Users           @relation(fields: [user_id], references: [id])
-  price         Decimal?
-  products      Products[]
+  id       Int        @id @default(autoincrement())
+  user_id  Int        @unique
+  user     Users      @relation(fields: [user_id], references: [id])
+  price    Decimal?
+  products Products[]
 }
 
-
-
 model Products {
-  id              Int           @id @default(autoincrement())
-  name            String    
-  description     String?
-  slug            String
-  price           Decimal
-  stock           Boolean       
-  category_id     Categories[] 
-  filter_id       Filters[]
-  picture         Pictures[]
-  gender_id       Int
-  gender          Genders       @relation(fields: [gender_id], references: [id])
-  created_At      DateTime      @default(now())
-  cart            Cart[]
+  id          Int          @id @default(autoincrement())
+  name        String
+  description String?
+  slug        String
+  price       Decimal
+  stock       Boolean
+  category_id Categories[]
+  filter_id   Filters[]
+  picture     Pictures[]
+  gender_id   Int
+  gender      Genders      @relation(fields: [gender_id], references: [id])
+  created_At  DateTime     @default(now())
+  cart        Cart[]
 }
 
 model Pictures {
-  id              Int           @id @default(autoincrement())
-  link            String        @unique
-  product_id      Int
-  product         Products      @relation(fields: [product_id], references: [id])
+  id         Int      @id @default(autoincrement())
+  link       String   @unique
+  product_id Int
+  product    Products @relation(fields: [product_id], references: [id])
 }
 
 model Categories {
-  id              Int           @id @default(autoincrement())
-  name            String
-  product         Products[]
+  id      Int        @id @default(autoincrement())
+  name    String
+  product Products[]
 }
 
 model Filters {
-  id              Int           @id @default(autoincrement())
-  name            String
-  product         Products[]
+  id      Int        @id @default(autoincrement())
+  name    String
+  product Products[]
 }
 
 model Genders {
-  id              Int           @id @default(autoincrement())
-  name            String
-  product         Products[]
-} 
-
+  id      Int        @id @default(autoincrement())
+  name    String
+  product Products[]
+}
 
 // WEB
 
 model Sessions {
-  id              Int           @id @default(autoincrement())
-  user_id         Int           @unique
-  User            Users         @relation(fields: [user_id], references: [id])
-  token           String        @unique 
-  created_At      DateTime      @default(now())
-  expires_At      DateTime  
+  id         Int      @id @default(autoincrement())
+  user_id    Int      @unique
+  User       Users    @relation(fields: [user_id], references: [id])
+  token      String   @unique
+  created_At DateTime @default(now())
+  expires_At DateTime
 }

@@ -1,9 +1,10 @@
+import { MouseEventHandler } from "react"
 
 type ButtonProps = {
     primary: boolean
     buttonText: string
     link: string
-    onClick: string
+    onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
 const buttonStyles = {
@@ -14,18 +15,18 @@ const buttonStyles = {
 
  
 
-export default function Button({primary, buttonText, link }: ButtonProps ){ return (
+export default function Button({primary, buttonText, link, onClick }: ButtonProps ){ return (
         <>  
       
         
            {primary ? 
-                <button  className={buttonStyles.primary}> 
+                <button  className={primary ? buttonStyles.primary: ""} onClick={onClick}> 
                     <a href={link}>
                         {buttonText}
                     </a>
                 </button> 
                 : 
-                <button className={buttonStyles.secondary} >
+                <button className={buttonStyles.secondary} onClick={onClick} >
                     <a href={link}>
                         {buttonText}
                     </a>

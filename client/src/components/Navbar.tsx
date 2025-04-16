@@ -1,7 +1,7 @@
 import { IoMdMenu } from "react-icons/io";
 import { useState } from "react";
 import Sidebar from "../ui/Sidebar";
-import Cart from "../ui/Cart";
+import Cart from "../ui/CartSidebar";
 
 
 export default function Navbar(){

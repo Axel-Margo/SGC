@@ -20,8 +20,7 @@ export default function ArticleDescription(){
        <SecurityAndDeliveries />
        </div>
             <div className='mt-14 flex flex-col gap-4 mb-4'>
-            <Button primary={false} buttonText={ButtonPurpose.addToCartThenAccessCart} link='#' onClick='{handleClick}'/>
-            <Button primary={true} buttonText={ButtonPurpose.pay} link='product/personal-infos' onClick='{handleClick}'/>
+            <Button primary={true} buttonText={ButtonPurpose.pay} link='/personal-infos' />
             </div>
             </div>
     </div>

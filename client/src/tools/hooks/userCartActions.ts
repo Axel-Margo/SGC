@@ -1,6 +1,6 @@
 import { ProductsData } from "../../types/Products";
 import { useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../../state/cartSlice";
+import { addToCart, cleanCart, removeFromCart,  } from "../../state/cartSlice";
 import { AppDispatch } from "../../state/store";
 
 export const useCartActions = () => {
@@ -8,11 +8,15 @@ export const useCartActions = () => {
     
     const handleAddToCart = (product: ProductsData) => {
             dispatch(addToCart(product))    
-        
-          }
+         }
+    
     const handleRemoveFromCart = (product: ProductsData) => {
         dispatch(removeFromCart(product))
     }
 
-    return { handleAddToCart, handleRemoveFromCart }
+    const handleCleanCart = () => {
+        dispatch(cleanCart())
+    }
+
+    return { handleAddToCart, handleRemoveFromCart, handleCleanCart }
 }

@@ -38,7 +38,7 @@ export const findUser = async (email, password) => {
     try {
         const isPassword = await bcrypt.compare(password, user.password)
             if (!isPassword) return {success: false, message: "Mot de passe érroné."}
-                return {success: true, message: "Connexion réussie !"}
+        return {user: user.id, success: true, message: "Connexion réussie !"}
         }
     
     catch (e){

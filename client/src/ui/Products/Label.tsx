@@ -1,7 +1,10 @@
-export default function Label(){
+interface LabelProps {
+    text: string
+}
+export default function Label({text}: LabelProps){
     return (
         <>
-            <h2 className="text-xl mt-4">Best Sellers</h2>
+            <h2 className="text-3xl mt-4">{text}</h2>
         </>
     )
 }

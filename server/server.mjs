@@ -23,13 +23,17 @@ app.use(bodyParser.json())
 
 app.use(session({
     secret: secretKey,
-    saveUninitialized: true,
+    saveUninitialized: false,
     resave: false,
-    sameSite: 'none',
-    maxAge: 60000 * 10
-}))
+    cookie: { 
+        httpOnly: true,  
+        secure: false, // true en PROD
+        sameSite: 'strict',  
+        maxAge: 60000 * 10 
+    }
+}));
+ // CREEE DES QUE USER FAIT REQUETE HTTP
 
-app.use(cookieParser())
 
 // Routes
 app.use('/users', userRoutes)

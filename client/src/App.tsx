@@ -9,6 +9,7 @@ import LoginBackgroundImage from './ui/Login/LoginBackgroundImage';
 import RegisterForm from './ui/Login/RegisterForm';
 import LoginForm from './ui/Login/LoginForm';
 import ArticleDescription from './components/Products/ArticleDescription';
+import CartPage from './ui/CartPage';
 
 
 const router = createBrowserRouter( 
@@ -63,14 +64,20 @@ const router = createBrowserRouter(
   </>
 },
 {
-  path: '/product/personal-infos',
+  path: '/personal-infos',
   element:
   <>
     <Navbar  />
     <PersonalInfos />
     
   </>
-}])
+},
+{path: '/cart-page',
+  element:
+  <>
+    <CartPage />
+    
+  </>}])
 
 export default function App() {
  

@@ -26,19 +26,25 @@ try {
   credentials: 'include',
   body: JSON.stringify(data)
   
-
 })
-const res = await response.json()
-navigate('/shop');
-console.log(res.message)
+
+if (!response.ok) {
+    const errorData = await response.json()
+    console.log(errorData.message)
+} 
+  else {
+      const res = await response.json()
+      navigate('/shop') 
+      console.log(res.message)
+}
 
 }
 
 
 
-catch (e) {
-  console.log(e)
-}
+  catch (e) {
+    console.log(e)
+  }
 }
 
 

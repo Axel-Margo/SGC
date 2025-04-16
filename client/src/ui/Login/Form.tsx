@@ -11,6 +11,7 @@ export default function Form<T extends z.ZodType<any>>({
   onSubmit,
   buttonText,
   schema,
+  secondaryDisplay
 }: FormProps<T>) {
   const {
     handleSubmit,
@@ -22,7 +23,7 @@ export default function Form<T extends z.ZodType<any>>({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="">
-      <div className="flex flex-col gap-2 justify-start">
+      <div className={`flex  gap-2 justify-start ${secondaryDisplay ? 'flex-row ' : 'flex-col' }`}>
         {fields.map((field) => (
           <FormField
             name={field.name}
@@ -40,7 +41,7 @@ export default function Form<T extends z.ZodType<any>>({
           </span>
         )}
       </div>
-      <button type="submit" className="p-2 bg-white mt-2 w-full">
+      <button type="submit" className="p-2 bg-white max-w-64 mt-2 w-full">
         {buttonText}
       </button>
     </form>
